@@ -1,6 +1,6 @@
 # smart contact manager
 A smart contact management system developed with Spring Boot, JPA and Spring Security for authentication, MySQL for data storage, and Thymeleaf for front-end views.
-# User Contact Management System
+# smart contact manager
 
 This is a **Spring Boot** application for managing users and their contacts. The system includes functionalities for user authentication and contact management. Built using **Spring Boot**, **JPA**, **Hibernate**, **Thymeleaf**, **Spring Security**, and **MySQL**.
 
