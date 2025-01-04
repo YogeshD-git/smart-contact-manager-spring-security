@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>About Page</title>
+</head>
+<body>
+<section>
+<div class="sidenav">
+         <div class="login-main-text">
+            <h2>Smart Contact Manager<br></h2>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form class="form" th:action="@{/signinaction}" method="POST">
+               <div th:if="${param.error}" class="alert alert-danger">
+           			Invalid Username or Password!             
+               </div>
+               <div th:if="${param.logout}" class="alert alert-success">
+           		You have been logged out!            
+               </div>
+                <div th:if="${param.change}" class="alert alert-success">
+           		<p th:text="${param.change}"></p>         
+               </div>
+                  <div class="form-group">
+                     <label>User Name</label>
+                     <input name="username" type="text" class="form-control" placeholder="User Name">
+                  </div>
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input type="password" name="password" class="form-control" placeholder="Password">
+                  </div>
+                   <div class="container text-center">
+                   <button type="submit" class="btn btn-black" style="float: left">Login</button>
+                  <a th:href="@{/forgot-password}" style="float: right">Forgot password?</a>
+                  </div>
+                  
+                  
+                 
+             
+               </form>
+            </div>
+         </div>
+      </div>
+</section>
+</body>
+</html>

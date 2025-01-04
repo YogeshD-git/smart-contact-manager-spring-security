@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body" th:if="${contact}">
+				<table class="table con_table_tr">
+					<tbody>
+						<tr>
+							<td style="width: 10px">
+								<div class="container">
+									<img th:src="@{'/image/'+${contact.con_imgUrl}}" alt=""
+										class="contact_profile_picture"
+										style="width: 200px; height: 200px;" />
+								</div>
+							</td>
+							<td>
+
+
+								<div class="container ml-4 mt-2">
+
+									<h2 class="mb-5">
+										<span style="font-weight: bold;" th:text="${contact.con_name}"></span>
+										<span style="font-size: 20px"
+											th:text="'('+${contact.con_nickName}+')'"></span>
+									</h2>
+									<table class="table">
+										<tr class="con_det_table_tr">
+											<th>Contact ID</th>
+											<th>Phone</th>
+											<th>Email</th>
+											<th>About</th>
+										</tr>
+										<tr>
+											<td><h6>
+													<span class="pr-3" th:text="${'SCM'+contact.con_id}"></span>
+												</h6></td>
+											<td><h6>
+
+													<span class="pr-3" th:text="${contact.con_phone}"></span>
+
+												</h6></td>
+											<td><h6>
+
+													<span class="pr-3" th:text="${contact.con_email}"></span>
+												</h6></td>
+											<td><th:block th:remove="tag"
+													th:utext="${contact.con_desc}"></th:block></td>
+										</tr>
+									</table>
+
+
+								</div>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+				<div class="text-center">
+					<form method="post" th:action="@{'/user/edit-contact/'+${contact.con_id}}">
+								<button type="submit" class="btn btn-outline-success mr-2">Edit</button>
+								<a href="#" th:onclick="|deleteContact(${contact.con_id})|" class="btn btn-outline-danger">Remove</a>
+					</form>
+				</div>
+			</div>
+			<h3 class="text-center p-3 " th:unless="${contact}">You don't have permission to access this page.. (No such contact exist for user)</h3>
+		</div>
+
+	</section>
+</body>
+</html>

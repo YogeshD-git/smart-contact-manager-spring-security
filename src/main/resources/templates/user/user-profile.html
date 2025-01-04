@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+
+			<div class="card-body">
+				<table class="table con_table_tr">
+					<tbody>
+						<tr>
+							<td style="width: 10px">
+								<div class="container">
+									<img th:src="@{'/image/'+${user.imageUrl}}" alt=""
+										class="contact_profile_picture"
+										style="width: 200px; height: 200px;" />
+								</div>
+							</td>
+							<td>
+
+
+								<div class="container ml-4 mt-2">
+
+									<h2 class="mb-5">
+										<span style="font-weight: bold; text-transform: uppercase;"
+											th:text="${user.user_name}"></span>
+
+									</h2>
+									<table class="table">
+										<tr class="con_det_table_tr">
+											<th>User ID</th>
+
+											<th>Email</th>
+											<th>Account Status</th>
+											<th>About</th>
+										</tr>
+										<tr>
+											<td><h6>
+													<span class="pr-3" th:text="${'SCM'+user.user_id}"></span>
+												</h6></td>
+
+											<td><h6>
+
+													<span class="pr-3" th:text="${user.user_email}"></span>
+												</h6></td>
+											<td><h6>
+
+													<span class="pl-4 text-success font-weight-bold" th:if="${user.user_status == true}" >● Active</span>
+												</h6></td>
+											<td><th:block th:remove="tag"
+													th:utext="${user.user_desc}"></th:block></td>
+										</tr>
+									</table>
+
+
+								</div>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+<script type="text/javascript">
+		$(document).ready(() =>{
+			$(".item").removeClass(".active-nav");
+			$("#profile-link").addClass("active-nav");
+		});
+		
+		</script>
+
+	</section>
+</body>
+</html>
